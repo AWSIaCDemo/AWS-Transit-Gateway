@@ -1,6 +1,7 @@
 module "tgw" {
   source  = "terraform-aws-modules/transit-gateway/aws"
-
+  version = "~> 2.0"
+  
   name        = "Master-TGW-001"
   description = "My TGW shared with several other AWS accounts"
 
