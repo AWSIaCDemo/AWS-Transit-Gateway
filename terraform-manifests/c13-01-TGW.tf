@@ -7,6 +7,6 @@ resource "aws_ec2_transit_gateway" "my-test-tgw" {
   dns_support                     = "enable"
   vpn_ecmp_support                = "enable"
   tags {
-    Name = "my-test-transit-gateway"
+    Name = "${local.name}-${var.tgw_name}"
   }
 }
