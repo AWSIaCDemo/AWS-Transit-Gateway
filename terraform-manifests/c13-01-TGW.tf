@@ -1,11 +1,12 @@
-resource "aws_ec2_transit_gateway" "Master-TGW-001" {
+resource "aws_ec2_transit_gateway" "my-test-tgw" {
+  description                     = "my-test-transit-gateway"
   amazon_side_asn                 = 64512
-  description                     = "Core-TransitGtwy"
   auto_accept_shared_attachments  = "disable"
-  default_route_table_association = "disable"
-  default_route_table_propagation = "disable"
-  
+  default_route_table_association = "enable"
+  default_route_table_propagation = "enable"
+  dns_support                     = "enable"
+  vpn_ecmp_support                = "enable"
   tags {
-    Name = "Master-TGW-001"
+    Name = "my-test-transit-gateway"
   }
- }
+}
