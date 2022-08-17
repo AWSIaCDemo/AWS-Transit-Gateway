@@ -8,11 +8,11 @@ terraform {
     }
     null = {
       source = "hashicorp/null"
-      version = "~> 3.0
+      version = "~> 3.0"
     }    
     random = {
       source = "hashicorp/random"
-      version = "~> 3.0
+      version = "~> 3.0"
     }            
   }
   # Adding Backend as S3 for Remote State Storage
