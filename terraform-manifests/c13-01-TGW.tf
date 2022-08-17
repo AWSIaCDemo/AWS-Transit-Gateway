@@ -1,7 +1,7 @@
 module "tgw" {
   source  = "terraform-aws-modules/transit-gateway/aws"
   version = "~> 2.0"
-  name        = "my-tgw"
+  name        = "Master-tgw"
   description = "My TGW shared with several other AWS accounts"
   enable_auto_accept_shared_attachments = true
   vpc_attachments = {
@@ -24,13 +24,13 @@ module "tgw" {
   ram_allow_external_principals = true
   ram_principals = [307990089504]
   tags = {
-    Purpose = "tgw-complete-example"
+    Purpose = "Master-tgw"
   }
 }
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 3.0"
-  name = "my-vpc"
+  name = "TGW-vpc"
   cidr = "10.10.0.0/16"
   azs             = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
   private_subnets = ["10.10.1.0/24", "10.10.2.0/24", "10.10.3.0/24"]
