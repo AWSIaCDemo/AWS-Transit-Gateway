@@ -4,5 +4,5 @@ resource "aws_ec2_transit_gateway" "Master-TGW-001" {
   auto_accept_shared_attachments  = "disable"
   default_route_table_association = "disable"
   default_route_table_propagation = "disable"
-  name = "${local.name}-${var.tgw_name}"
-}
+  tag  = "Master-TGW-001"
+  }
