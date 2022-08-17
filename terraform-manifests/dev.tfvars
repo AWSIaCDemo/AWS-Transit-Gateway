@@ -1,4 +1,4 @@
 # Environment
 environment = "Master"
 # TGW Variables
-vpc_name = "Master-TGW-001"
+tgw_name = "Master-TGW-001"
