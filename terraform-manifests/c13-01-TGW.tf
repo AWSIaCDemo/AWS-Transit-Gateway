@@ -1,51 +1,7 @@
-module "tgw" {
-  source  = "terraform-aws-modules/transit-gateway/aws"
-  version = "~> 2.0"
-  
-  name        = "Master-TGW-001"
-  description = "My TGW shared with several other AWS accounts"
-
-  enable_auto_accept_shared_attachments = true
-
-  vpc_attachments = {
-    vpc = {
-      vpc_id       = module.vpc.vpc_id
-      subnet_ids   = module.vpc.private_subnets
-      dns_support  = true
-      ipv6_support = true
-
-      tgw_routes = [
-        {
-          destination_cidr_block = "30.0.0.0/16"
-        },
-        {
-          blackhole = true
-          destination_cidr_block = "40.0.0.0/20"
-        }
-      ]
-    }
-  }
-
-  ram_allow_external_principals = true
-  ram_principals = [307990089504]
-
-  tags = {
-    Purpose = "tgw-core"
-  }
-}
-
-module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "~> 3.0"
-
-  name = "Master-TGW-VPC-001"
-
-  cidr = "10.10.0.0/16"
-
-  azs             = ["us-east-1a", "us-east-1b", "us-east-1c"]
-  private_subnets = ["10.10.1.0/24", "10.10.2.0/24", "10.10.3.0/24"]
-
-  enable_ipv6                                    = true
-  private_subnet_assign_ipv6_address_on_creation = true
-  private_subnet_ipv6_prefixes                   = [0, 1, 2]
+resource "aws_ec2_transit_gateway" "Master-TGW-001" {
+  amazon_side_asn                 = 64512
+  description                     = "Core-TransitGtwy"
+  auto_accept_shared_attachments  = "disable"
+  default_route_table_association = "disable"
+  default_route_table_propagation = "disable"
 }
