@@ -1,6 +1,6 @@
 module "tgw" {
   source  = "terraform-aws-modules/transit-gateway/aws"
-  version = "~> 2.0"
+  version = "~> 3.0"
   name        = "Master-tgw"
   description = "My TGW shared with several other AWS accounts"
   enable_auto_accept_shared_attachments = true
