@@ -4,15 +4,15 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 2.8"
+      version = "~> 3.0"
     }
     null = {
       source = "hashicorp/null"
-      version = "~> 2.8"
+      version = "~> 3.0"
     }    
     random = {
       source = "hashicorp/random"
-      version = "~> 2.8"
+      version = "~> 3.0"
     }            
   }
   # Adding Backend as S3 for Remote State Storage
