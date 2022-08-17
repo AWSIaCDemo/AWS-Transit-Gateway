@@ -1,17 +1,3 @@
-provider "aws" {
-  region = local.region
-}
-
-locals {
-  name   = "Master-tgw-${replace(basename(path.cwd), "_", "-")}"
-  region = "eu-west-1"
-
-  tags = {
-    Example    = local.name
-    
-  }
-}
-
 ################################################################################
 # Transit Gateway Module
 ################################################################################
@@ -19,7 +5,7 @@ locals {
 module "tgw" {
   source = "../../"
 
-  name            = local.name
+  name            = Master-TGW-001
   description     = "My TGW shared with several other AWS accounts"
   amazon_side_asn = 64532
 
@@ -81,7 +67,7 @@ module "vpc1" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "~> 3.0"
 
-  name = "${local.name}-vpc1"
+  name = "Master-TGW-vpc1"
   cidr = "10.10.0.0/16"
 
   azs             = ["${local.region}a", "${local.region}b", "${local.region}c"]
